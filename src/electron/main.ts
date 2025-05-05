@@ -1,8 +1,8 @@
-import { app, BrowserWindow, ipcMain } from "electron";
+import { app, BrowserWindow } from "electron";
 import path from "path";
 import { getPreloadPath } from "./pathResolver.js";
 import { getStaticData, pollResources } from "./resourceManager.js";
-import { isDev } from "./utils.js";
+import { ipcMainHandle, isDev } from "./utils.js";
 app.on("ready", () => {
   const mainWindow = new BrowserWindow({
     webPreferences: {
@@ -18,7 +18,7 @@ app.on("ready", () => {
 
   pollResources(mainWindow);
 
-  ipcMain.handle("getStaticData", () => {
+  ipcMainHandle("getStaticData", () => {
     return getStaticData();
   });
 });

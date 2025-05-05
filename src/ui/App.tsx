@@ -5,10 +5,10 @@ function App() {
   const [count, setCount] = useState(0);
 
   useEffect(() => {
-    // @ts-expect-error 무시하셈
-    window.electron.subscribeStatistics((stats) => {
+    const unsub = window.electron.subscribeStatistics((stats) => {
       console.log(stats);
     });
+    return () => unsub();
   }, []);
 
   return (
