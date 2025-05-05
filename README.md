@@ -77,6 +77,6 @@ electron_tutorial/
 - 꺾은선 그래프로 시간에 따른 변화 표시
 - CPU, RAM, 저장소 사용량을 서로 다른 색상으로 구분
 
-## 라이선스
-
-MIT
+## 참고 자료
+- https://www.youtube.com/watch?v=fP-371MN0Ck&ab_channel=freeCodeCamp.org
+- https://github.com/N-Ziermann-YouTube/electron-course
