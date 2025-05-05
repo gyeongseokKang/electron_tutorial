@@ -1,54 +1,77 @@
-# React + TypeScript + Vite
+# Electron POC 시스템
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+이 레포지토리는 Electron의 최소 기능을 증명하는 POC(Proof of Concept)입니다. React와 TypeScript를 사용하여 CPU, RAM, 저장소 사용량을 실시간으로 모니터링하고 시각화하는 데스크톱 애플리케이션을 구현합니다.
 
-Currently, two official plugins are available:
+## 주요 기능
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **실시간 리소스 모니터링**: CPU, RAM, 저장소 사용량을 실시간으로 확인
+- **반응형 게이지 차트**: 직관적인 반원형 게이지를 통한 현재 사용량 시각화
+- **시계열 데이터 트래킹**: 시간에 따른 사용량 변화를 꺾은선 그래프로 표시
+- **크로스 플랫폼 지원**: Windows, macOS, Linux에서 동일하게 실행 가능
 
-## Expanding the ESLint configuration
+## 기술 스택
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- **Electron**: 크로스 플랫폼 데스크톱 애플리케이션 개발
+- **React**: 사용자 인터페이스 구현
+- **TypeScript**: 타입 안정성 확보
+- **Recharts**: 데이터 시각화
+- **Tailwind CSS**: UI 스타일링
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+## 설치 및 실행 방법
+
+### 개발 환경 설정
+
+```bash
+# 저장소 클론
+git clone https://github.com/gyeongseokKang/electron_tutorial.git
+cd electron_tutorial
+
+# 의존성 설치
+yarn install
+
+# 개발 모드 실행
+yarn dev
+
+# 애플리케이션 빌드
+yarn dist:mac    # macOS용 빌드
+yarn dist:win    # Windows용 빌드
+yarn dist:linux  # Linux용 빌드
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## 프로젝트 구조
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
 ```
+electron_tutorial/
+├── dist-electron/    # 컴파일된 Electron 메인 프로세스 코드
+├── dist/             # 컴파일된 React 애플리케이션
+├── src/
+│   ├── electron/     # Electron 메인 및 프리로드 스크립트
+│   │   ├── main.ts   # 메인 프로세스 코드
+│   │   └── preload.cts # 프리로드 스크립트
+│   └── ui/           # React 애플리케이션 코드
+│       ├── components/ # React 컴포넌트
+│       │   └── SystemStats.tsx # 시스템 통계 컴포넌트
+│       ├── App.tsx   # 메인 React 컴포넌트
+│       └── ...
+├── types.d.ts        # 전역 타입 정의
+├── package.json
+└── ...
+```
+
+## 구현된 차트 컴포넌트
+
+### 1. 게이지 차트
+
+- 반원형 UI로 현재 사용량을 직관적으로 표시
+- 0%, 50%, 100% 눈금 제공
+- 값이 매우 작을 경우에도 시각적으로 인식 가능하도록 최소 표시 보장
+
+### 2. 사용량 추이 차트
+
+- 최근 10개의 데이터 포인트 기록
+- 꺾은선 그래프로 시간에 따른 변화 표시
+- CPU, RAM, 저장소 사용량을 서로 다른 색상으로 구분
+
+## 라이선스
+
+MIT
