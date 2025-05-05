@@ -2,12 +2,17 @@
 
 이 레포지토리는 Electron의 최소 기능을 증명하는 POC(Proof of Concept)입니다. React와 TypeScript를 사용하여 CPU, RAM, 저장소 사용량을 실시간으로 모니터링하고 시각화하는 데스크톱 애플리케이션을 구현합니다.
 
-## 주요 기능
+![image](https://github.com/user-attachments/assets/4b03419e-204e-4ca3-99d3-82953be8aec0)
 
-- **실시간 리소스 모니터링**: CPU, RAM, 저장소 사용량을 실시간으로 확인
-- **반응형 게이지 차트**: 직관적인 반원형 게이지를 통한 현재 사용량 시각화
-- **시계열 데이터 트래킹**: 시간에 따른 사용량 변화를 꺾은선 그래프로 표시
+![image](https://github.com/user-attachments/assets/7d62e814-3623-4fa6-8886-5465e72fc9d2)
+
+## 주요 검증 내역
+
+- **IPC의 타입 안전한 통신**: Electron과 React 간의 안전한 데이터 교환을 보장
+- **일렉트론과 React 앱의 통합**: 두 기술 스택 간의 원활한 상호작용 구현
 - **크로스 플랫폼 지원**: Windows, macOS, Linux에서 동일하게 실행 가능
+- **트레이 및 Dock 같은 데스크탑 기능 지원**: 사용자 편의성을 위한 다양한 데스크탑 기능 제공
+- **리액트 최소 기능 구현**: CPU, RAM, 저장소 사용량을 실시간으로 모니터링하고 시각화
 
 ## 기술 스택
 
