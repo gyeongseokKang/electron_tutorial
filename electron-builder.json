@@ -1,7 +1,7 @@
 {
   "appId": "com.handykang.electron-tutorial",
   "files": ["disst-electron", "dist-react"],
-  "extraResources": ["dist-electron/preload.cjs"],
+  "extraResources": ["dist-electron/preload.cjs", "src/assets/**"],
   "icon": "./desktopIcon.png",
   "mac": {
     "target": "dmg"
